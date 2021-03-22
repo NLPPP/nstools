@@ -10,9 +10,9 @@ class ConvertMapTest(TestCase):
         mapping = {'a': 'b', 'b': 'a', 'abc': 'cba', 'cb': 'bb'}
         cm = ConvertMap('test', mapping)
         self.assertEqual(len(cm), 6) # with switch node: 'ab' and 'c'
-        self.failUnless('a' in cm)
-        self.failUnless('c' in cm)
-        self.failIf('bc' in cm)
+        self.assertTrue('a' in cm)
+        self.assertTrue('c' in cm)
+        self.assertFalse('bc' in cm)
         self.assertEqual(cm['a'].data, (True, True, 'b'))
         self.assertEqual(cm['b'].data, (True, False, 'a'))
         self.assertEqual(cm['c'].data, (False, True, ''))
